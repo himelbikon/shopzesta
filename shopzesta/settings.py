@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-!dbixnll#n*k8k@&-p==#ym*$z-_i7*8!*6r3c@vo6$9&4s8oi'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['himelbikon.pythonanywhere.com']
 
 
 # Application definition
@@ -37,6 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'core',
+    'user',
+    'product',
+
+    'django_cleanup',
 ]
 
 MIDDLEWARE = [
@@ -116,8 +122,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    # os.path.join(BASE_DIR, 'static'),
+    BASE_DIR.joinpath('static'),
+]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR.joinpath('media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = 'user.User'
+
+try:
+    from .local_settings import *
+    print('<<< --- You are on local server --- >>>')
+except:
+    print('<<< --- Production server --- >>>')
