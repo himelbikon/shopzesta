@@ -1,0 +1,13 @@
+there is an ecommerce section
+
+we need a basic index page
+
+product listing page
+
+shopping cart and checkout
+
+no payment processing integration
+
+it just saves everything on the back end
+
+client needs to be able to enter all items in himself
