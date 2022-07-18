@@ -8,7 +8,7 @@
             <!-- Heading -->
             <div class="d-flex justify-content-between align-items-end border-bottom pb-3 mb-7">
                 <h1 class="h3 mb-0">Shopping cart</h1>
-                <span>2 items</span>
+                <span>{{cart_items|length}} items</span>
             </div>
             <!-- End Heading -->
 
@@ -17,24 +17,27 @@
                 <!-- List Group -->
                 <ul class="list-group list-group-flush list-group-no-gutters mb-5">
                     <!-- Item -->
+                    {% for item in cart_items %}
                     <li class="list-group-item">
                         <div class="d-flex">
                             <div class="flex-shrink-0">
-                                <img class="avatar avatar-xl avatar-4x3" src="../assets/img/320x320/img2.jpg"
+                                <img class="avatar avatar-xl avatar-4x3" src="{{item.product.image1.url}}"
                                     alt="Image Description">
                             </div>
 
                             <div class="flex-grow-1 ms-3">
                                 <div class="row">
                                     <div class="col-sm-7 mb-3 mb-sm-0">
-                                        <h5><a class="text-dark" href="#">Originals national backpack</a></h5>
+                                        <h5><a class="text-dark" href="#">{{item.product.name}}</a></h5>
 
                                         <div class="d-block d-sm-none">
-                                            <h5 class="mb-1">$29.99</h5>
+                                            <h5 class="mb-1">
+                                                ${{item.product.price}}
+                                            </h5>
                                         </div>
 
                                         <div class="d-grid gap-1">
-                                            <div class="text-body">
+                                            <!-- <div class="text-body">
                                                 <span class="small">Gender:</span>
                                                 <span class="fw-semi-bold small">Men</span>
                                             </div>
@@ -47,7 +50,7 @@
                                             <div class="text-body">
                                                 <span class="small">Size:</span>
                                                 <span class="fw-semi-bold small">One size</span>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                     <!-- End Col -->
@@ -55,8 +58,9 @@
                                     <div class="col-sm-3">
                                         <div class="row">
                                             <div class="col-auto">
+                                                <small>{{item.quantity}}</small>
                                                 <!-- Select -->
-                                                <select class="form-select form-select-sm mb-3">
+                                                <!-- <select class="form-select form-select-sm mb-3">
                                                     <option value="quantity1">1</option>
                                                     <option value="quantity2">2</option>
                                                     <option value="quantity3">3</option>
@@ -67,7 +71,7 @@
                                                     <option value="quantity8">8</option>
                                                     <option value="quantity9">9</option>
                                                     <option value="quantity10">10</option>
-                                                </select>
+                                                </select> -->
                                                 <!-- End Select -->
                                             </div>
 
@@ -77,9 +81,9 @@
                                                         <i class="bi-trash me-1"></i> Remove
                                                     </a>
 
-                                                    <a class="link-sm link-secondary small" href="javascript:;">
+                                                    <!-- <a class="link-sm link-secondary small" href="javascript:;">
                                                         <i class="bi-heart me-1"></i> Save for later
-                                                    </a>
+                                                    </a> -->
                                                 </div>
                                             </div>
                                             <!-- End Col -->
@@ -89,7 +93,9 @@
                                     <!-- End Col -->
 
                                     <div class="col-4 col-sm-2 d-none d-sm-inline-block text-right">
-                                        <span class="h5 d-block mb-1">$29.99</span>
+                                        <span class="h5 d-block mb-1">
+                                            ${{item.qty_price}}
+                                        </span>
                                     </div>
                                     <!-- End Col -->
                                 </div>
@@ -97,90 +103,10 @@
                             </div>
                         </div>
                     </li>
+                    {% endfor %}
                     <!-- End Item -->
 
-                    <!-- Item -->
-                    <li class="list-group-item">
-                        <div class="d-flex">
-                            <div class="flex-shrink-0">
-                                <img class="avatar avatar-xl avatar-4x3" src="../assets/img/320x320/img3.jpg"
-                                    alt="Image Description">
-                            </div>
 
-                            <div class="flex-grow-1 ms-3">
-                                <div class="row">
-                                    <div class="col-sm-7 mb-3 mb-sm-0">
-                                        <h5><a class="text-dark" href="#">Vans large image t-shirt</a></h5>
-
-                                        <div class="d-block d-sm-none">
-                                            <h5 class="mb-1">$43.99</h5>
-                                        </div>
-
-                                        <div class="d-grid gap-1">
-                                            <div class="text-body">
-                                                <span class="small">Gender:</span>
-                                                <span class="fw-semi-bold small">Women</span>
-                                            </div>
-
-                                            <div class="text-body">
-                                                <span class="small">Color:</span>
-                                                <span class="fw-semi-bold small">Core Black / Carbon</span>
-                                            </div>
-
-                                            <div class="text-body">
-                                                <span class="small">Size:</span>
-                                                <span class="fw-semi-bold small">S</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Col -->
-
-                                    <div class="col-sm-3">
-                                        <div class="row">
-                                            <div class="col-auto">
-                                                <!-- Select -->
-                                                <select class="form-select form-select-sm mb-3">
-                                                    <option value="quantity1">1</option>
-                                                    <option value="quantity2">2</option>
-                                                    <option value="quantity3">3</option>
-                                                    <option value="quantity4">4</option>
-                                                    <option value="quantity5">5</option>
-                                                    <option value="quantity6">6</option>
-                                                    <option value="quantity7">7</option>
-                                                    <option value="quantity8">8</option>
-                                                    <option value="quantity9">9</option>
-                                                    <option value="quantity10">10</option>
-                                                </select>
-                                                <!-- End Select -->
-                                            </div>
-
-                                            <div class="col-auto">
-                                                <div class="d-grid gap-2">
-                                                    <a class="link-sm link-secondary small" href="javascript:;">
-                                                        <i class="bi-trash me-1"></i> Remove
-                                                    </a>
-
-                                                    <a class="link-sm link-secondary small" href="javascript:;">
-                                                        <i class="bi-heart me-1"></i> Save for later
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <!-- End Col -->
-                                        </div>
-                                        <!-- End Row -->
-                                    </div>
-                                    <!-- End Col -->
-
-                                    <div class="col-4 col-sm-2 d-none d-sm-inline-block text-right">
-                                        <span class="h5 d-block mb-1">$29.99</span>
-                                    </div>
-                                    <!-- End Col -->
-                                </div>
-                                <!-- End Row -->
-                            </div>
-                        </div>
-                    </li>
-                    <!-- End Item -->
                 </ul>
                 <!-- End List Group -->
 
@@ -203,17 +129,18 @@
                             <h3 class="card-header-title">Order summary</h3>
                         </div>
 
-                        <form>
-                            <div class="border-bottom pb-4 mb-3">
+                        <form action="{% url 'product:create_order' %}" method="post">
+                            <!-- Promocode -->
+                            <!-- <div class="border-bottom pb-4 mb-3">
                                 <input type="text" class="form-control" name="name" placeholder="Enter promo code"
                                     aria-label="Enter promo code">
-                            </div>
+                            </div> -->
 
                             <div class="border-bottom pb-4 mb-4">
                                 <div class="d-grid gap-3">
                                     <dl class="row">
-                                        <dt class="col-sm-6">Item subtotal (2)</dt>
-                                        <dd class="col-sm-6 text-sm-end mb-0">$73.98</dd>
+                                        <dt class="col-sm-6">Item subtotal ({{cart_items|length}})</dt>
+                                        <dd class="col-sm-6 text-sm-end mb-0">${{cart.total_price}}</dd>
                                     </dl>
                                     <!-- End Row -->
 
@@ -225,9 +152,9 @@
                                 </div>
                             </div>
 
-                            <div class="border-bottom pb-4 mb-4">
+                            <!-- <div class="border-bottom pb-4 mb-4">
                                 <div class="d-grid gap-3">
-                                    <!-- Check -->
+                                 
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="deliveryRadioName"
                                             id="deliveryRadio1" checked>
@@ -237,9 +164,9 @@
                                                 days</span>
                                         </label>
                                     </div>
-                                    <!-- End Check -->
+                              
 
-                                    <!-- Check -->
+                                
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="deliveryRadioName"
                                             id="deliveryRadio2">
@@ -249,9 +176,9 @@
                                                 days</span>
                                         </label>
                                     </div>
-                                    <!-- End Check -->
+                           
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="d-grid gap-3 mb-4">
                                 <dl class="row">
@@ -268,7 +195,11 @@
                             </div>
 
                             <div class="d-grid">
-                                <a class="btn btn-primary btn-lg" href="../demo-shop/checkout.html">Checkout</a>
+                                {% csrf_token %}
+                                <input type="hidden" name="asas" value="asasas">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    Checkout
+                                </button>
                             </div>
                         </form>
                     </div>

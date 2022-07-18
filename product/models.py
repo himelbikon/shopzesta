@@ -14,7 +14,7 @@ class Product(models.Model):
     name = models.CharField(max_length=255)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     description = models.CharField(max_length=255)
-    price = models.DecimalField(decimal_places=2, max_digits=5)
+    price = models.DecimalField(decimal_places=2, max_digits=10)
     details = models.TextField()
 
     image1 = models.ImageField(upload_to='product/')
@@ -40,10 +40,53 @@ class Product(models.Model):
         img.save(image.path)
 
 
-class CartItem(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    total_price = models.DecimalField(
+        max_digits=11, decimal_places=2, default=0.0)
+
+    def __str__(self):
+        return self.user.email
+
+
+class CartItem(models.Model):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
+    qty_price = models.DecimalField(
+        max_digits=11, decimal_places=2, default=0.0)
+
+    def __str__(self):
+        return self.product.name
+
+    def save(self, *args, **kwargs):
+        self.qty_price = self.product.price * self.quantity
+        super(CartItem, self).save(*args, **kwargs)
+
+        cart_items = CartItem.objects.filter(cart=self.cart)
+        total_price = sum(
+            [item.product.price * item.quantity for item in cart_items])
+
+        cart = Cart.objects.get(pk=self.cart.id)
+        cart.total_price = total_price
+        cart.save()
+
+
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    total_price = models.DecimalField(
+        max_digits=11, decimal_places=2, default=0.0)
+
+    def __str__(self):
+        return self.user.email
+
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
+    qty_price = models.DecimalField(
+        max_digits=11, decimal_places=2, default=0.0)
 
     def __str__(self):
         return self.product.name
