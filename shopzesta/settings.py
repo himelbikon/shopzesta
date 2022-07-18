@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'shopzesta.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'shopzestaDB',
+        'NAME': 'shopzestadb',
         'USER': 'shopzesta_admin',
         'PASSWORD': 'shopzesta123',
         'HOST': 'localhost',
