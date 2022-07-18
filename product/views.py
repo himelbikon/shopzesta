@@ -2,8 +2,11 @@ from django.shortcuts import render, redirect
 from .models import *
 
 
-def overview(request):
-    pass
+def overview(request, id):
+    data = {
+        'product': Product.objects.get(pk=id)
+    }
+    return render(request, 'product/overview.html', data)
 
 
 def products(request):
@@ -33,6 +36,9 @@ def add_to_cart(request):
         return redirect('user:login')
 
     if request.method == 'POST':
+        print('===================================')
+        print(request.POST)
+        print('===================================')
         product = Product.objects.get(pk=request.POST['product'])
         quantity = int(request.POST['quantity'])
 
@@ -44,8 +50,6 @@ def add_to_cart(request):
 
         cart_item = CartItem.objects.filter(
             product=product, cart=cart).first()
-
-        print('++++++++++++++++++++++++++++++++++++===', cart_item)
 
         if cart_item is None:
             cart_item = CartItem(product=product, quantity=quantity, cart=cart)

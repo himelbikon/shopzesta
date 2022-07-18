@@ -228,39 +228,40 @@
         {% for product in products %}
         <div class="col mb-4">
             <!-- Card -->
-            <div class="card card-bordered shadow-none text-center h-100">
-                <div class="card-pinned">
-                    <img class="card-img-top" src="{{product.image1.url}}" alt="Image Description">
+            <a href="{% url 'product:overview' product.id %}">
+                <div class="card card-bordered shadow-none text-center h-100">
+                    <div class="card-pinned">
+                        <img class="card-img-top" src="{{product.image1.url}}" alt="Image Description">
 
-                    <!-- <div class="card-pinned-top-start">
+                        <!-- <div class="card-pinned-top-start">
                         <span class="badge bg-success rounded-pill">New arrival</span>
                     </div> -->
 
-                    <!-- <div class="card-pinned-top-start">
+                        <!-- <div class="card-pinned-top-start">
                         <span class="badge bg-danger rounded-pill">Out of stock</span>
                     </div> -->
 
-                    <!-- ==== Love button ==== -->
-                    <!-- <div class="card-pinned-top-end">
+                        <!-- ==== Love button ==== -->
+                        <!-- <div class="card-pinned-top-end">
                         
                         <button type="button" class="btn btn-outline-secondary btn-xs btn-icon rounded-circle"
                             data-bs-toggle="tooltip" data-bs-placement="top" title="Save for later">
                             <i class="bi-heart"></i>
                         </button>
                     </div> -->
-                </div>
-
-                <div class="card-body">
-                    <div class="mb-1">
-                        <a class="link-sm link-secondary" href="#">{{product.category}}</a>
                     </div>
-                    <a class="text-body" href="#">{{product.name}}</a>
-                    <p class="card-text text-dark">${{product.price}}</p>
-                </div>
 
-                <div class="card-footer pt-0">
-                    <!-- Rating -->
-                    <!-- <a class="d-inline-flex align-items-center mb-3" href="#">
+                    <div class="card-body">
+                        <div class="mb-1">
+                            <a class="link-sm link-secondary" href="#">{{product.category}}</a>
+                        </div>
+                        <a class="text-body" href="#">{{product.name}}</a>
+                        <p class="card-text text-dark">${{product.price}}</p>
+                    </div>
+
+                    <div class="card-footer pt-0">
+                        <!-- Rating -->
+                        <!-- <a class="d-inline-flex align-items-center mb-3" href="#">
                         <div class="d-flex gap-1 me-2">
                             <img src="{% static 'assets/svg/illustrations/star-muted.svg' %}" alt="Review rating"
                                 width="16">
@@ -275,21 +276,22 @@
                         </div>
                         <span class="small">0</span>
                     </a> -->
-                    <!-- End Rating -->
+                        <!-- End Rating -->
 
 
 
-                    <form action="{% url 'product:add_to_cart' %}" method="post">
-                        {% csrf_token %}
-                        <input type="hidden" name="product" value="{{product.id}}">
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="btn btn-outline-primary btn-sm rounded-pill">
-                            Add to cart
-                        </button>
-                    </form>
+                        <form action="{% url 'product:add_to_cart' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="product" value="{{product.id}}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-primary btn-sm rounded-pill">
+                                Add to cart
+                            </button>
+                        </form>
 
+                    </div>
                 </div>
-            </div>
+            </a>
             <!-- End Card -->
         </div>
         <!-- End Col -->
