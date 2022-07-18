@@ -141,3 +141,4 @@ try:
     print('<<< --- You are on local server --- >>>')
 except:
     print('<<< --- Production server --- >>>')
+    STATIC_ROOT = BASE_DIR.joinpath('static')
