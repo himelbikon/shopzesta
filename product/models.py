@@ -12,7 +12,6 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     description = models.CharField(max_length=255)
     price = models.DecimalField(decimal_places=2, max_digits=5)
@@ -39,3 +38,12 @@ class Product(models.Model):
         img = Image.open(image.path)
         img = img.resize((750, 750))
         img.save(image.path)
+
+
+class CartItem(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
+
+    def __str__(self):
+        return self.product.name

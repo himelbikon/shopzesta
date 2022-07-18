@@ -18,13 +18,13 @@
                                     of the bestselling cap in its locker.</p>
                             </div>
 
-                            <div class="d-flex gap-2">
+                            <!-- <div class="d-flex gap-2">
                                 <a class="btn btn-primary rounded-pill" href="#">$59 - Add to cart</a>
                                 <a class="btn btn-outline-primary btn-icon rounded-circle" href="#"
                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Save for later">
                                     <i class="bi-heart-fill"></i>
                                 </a>
-                            </div>
+                            </div> -->
                         </div>
                         <!-- End Col -->
 
@@ -54,13 +54,13 @@
                                     most advanced technology, it will make you rethink what iPad is capable of.</p>
                             </div>
 
-                            <div class="d-flex gap-2">
+                            <!-- <div class="d-flex gap-2">
                                 <a class="btn btn-primary rounded-pill" href="#">$799 - Add to cart</a>
                                 <a class="btn btn-outline-primary btn-icon rounded-circle" href="#"
                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Save for later">
                                     <i class="bi-heart-fill"></i>
                                 </a>
-                            </div>
+                            </div> -->
                         </div>
                         <!-- End Col -->
 
@@ -91,13 +91,13 @@
                                     shorts, chinos and printed jersey.</p>
                             </div>
 
-                            <div class="d-flex gap-2">
+                            <!-- <div class="d-flex gap-2">
                                 <a class="btn btn-primary rounded-pill" href="#">$15 - Add to cart</a>
                                 <a class="btn btn-outline-primary btn-icon rounded-circle" href="#"
                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Save for later">
                                     <i class="bi-heart-fill"></i>
                                 </a>
-                            </div>
+                            </div> -->
                         </div>
                         <!-- End Col -->
 
@@ -225,375 +225,81 @@
     <!-- End Title -->
 
     <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 mb-3">
+        {% for product in products %}
         <div class="col mb-4">
             <!-- Card -->
             <div class="card card-bordered shadow-none text-center h-100">
                 <div class="card-pinned">
-                    <img class="card-img-top" src="{% static 'assets/img/300x180/img3.jpg' %}" alt="Image Description">
+                    <img class="card-img-top" src="{{product.image1.url}}" alt="Image Description">
 
-                    <div class="card-pinned-top-start">
+                    <!-- <div class="card-pinned-top-start">
                         <span class="badge bg-success rounded-pill">New arrival</span>
-                    </div>
+                    </div> -->
 
-                    <div class="card-pinned-top-end">
-                        <button type="button" class="btn btn-outline-secondary btn-xs btn-icon rounded-circle"
-                            data-bs-toggle="tooltip" data-bs-placement="top" title="Save for later">
-                            <i class="bi-heart"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    <div class="mb-1">
-                        <a class="link-sm link-secondary" href="#">Accessories</a>
-                    </div>
-                    <a class="text-body" href="../demo-shop/product-overview.html">Herschel backpack in dark blue</a>
-                    <p class="card-text text-dark">$56.99</p>
-                </div>
-
-                <div class="card-footer pt-0">
-                    <!-- Rating -->
-                    <a class="d-inline-flex align-items-center mb-3" href="#">
-                        <div class="d-flex gap-1 me-2">
-                            <img src="{% static 'assets/svg/illustrations/star-muted.svg' %}" alt="Review rating"
-                                width="16">
-                            <img src="{% static 'assets/svg/illustrations/star-muted.svg' %}" alt="Review rating"
-                                width="16">
-                            <img src="{% static 'assets/svg/illustrations/star-muted.svg' %}" alt="Review rating"
-                                width="16">
-                            <img src="{% static 'assets/svg/illustrations/star-muted.svg' %}" alt="Review rating"
-                                width="16">
-                            <img src="{% static 'assets/svg/illustrations/star-muted.svg' %}" alt="Review rating"
-                                width="16">
-                        </div>
-                        <span class="small">0</span>
-                    </a>
-                    <!-- End Rating -->
-
-                    <button type="button" class="btn btn-outline-primary btn-sm rounded-pill">Add to cart</button>
-                </div>
-            </div>
-            <!-- End Card -->
-        </div>
-        <!-- End Col -->
-
-        <div class="col mb-4">
-            <!-- Card -->
-            <div class="card card-bordered shadow-none text-center h-100">
-                <div class="card-pinned">
-                    <img class="card-img-top" src="{% static 'assets/img/300x180/img1.jpg' %}" alt="Image Description">
-
-                    <div class="card-pinned-top-end">
-                        <button type="button" class="btn btn-outline-secondary btn-xs btn-icon rounded-circle"
-                            data-bs-toggle="tooltip" data-bs-placement="top" title="Save for later">
-                            <i class="bi-heart"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    <div class="mb-1">
-                        <a class="link-sm link-secondary" href="#">Clothing</a>
-                    </div>
-                    <a class="text-body" href="../demo-shop/product-overview.html">Front hoodie</a>
-                    <p class="card-text text-dark">$91.88</p>
-                </div>
-
-                <div class="card-footer pt-0">
-                    <!-- Rating -->
-                    <a class="d-inline-flex align-items-center mb-3" href="#">
-                        <div class="d-flex gap-1 me-2">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                            <img src="{% static 'assets/svg/illustrations/star-muted.svg' %}" alt="Review rating"
-                                width="16">
-                        </div>
-                        <span class="small">40</span>
-                    </a>
-                    <!-- End Rating -->
-
-                    <button type="button" class="btn btn-outline-primary btn-sm rounded-pill">Add to cart</button>
-                </div>
-            </div>
-            <!-- End Card -->
-        </div>
-        <!-- End Col -->
-
-        <div class="col mb-4">
-            <!-- Card -->
-            <div class="card card-bordered shadow-none text-center h-100">
-                <div class="card-pinned">
-                    <img class="card-img-top" src="{% static 'assets/img/300x180/img4.jpg' %}" alt="Image Description">
-
-                    <div class="card-pinned-top-start">
+                    <!-- <div class="card-pinned-top-start">
                         <span class="badge bg-danger rounded-pill">Out of stock</span>
-                    </div>
+                    </div> -->
 
-                    <div class="card-pinned-top-end">
+                    <!-- ==== Love button ==== -->
+                    <!-- <div class="card-pinned-top-end">
+                        
                         <button type="button" class="btn btn-outline-secondary btn-xs btn-icon rounded-circle"
                             data-bs-toggle="tooltip" data-bs-placement="top" title="Save for later">
                             <i class="bi-heart"></i>
                         </button>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="card-body">
                     <div class="mb-1">
-                        <a class="link-sm link-secondary" href="#">Accessories</a>
+                        <a class="link-sm link-secondary" href="#">{{product.category}}</a>
                     </div>
-                    <a class="text-body" href="../demo-shop/product-overview.html">Herschel backpack in gray</a>
-                    <p class="card-text text-dark">$29.99 <span class="text-body ms-1"><del>$33.99</del></span></p>
+                    <a class="text-body" href="#">{{product.name}}</a>
+                    <p class="card-text text-dark">${{product.price}}</p>
                 </div>
 
                 <div class="card-footer pt-0">
                     <!-- Rating -->
-                    <a class="d-inline-flex align-items-center mb-3" href="#">
+                    <!-- <a class="d-inline-flex align-items-center mb-3" href="#">
                         <div class="d-flex gap-1 me-2">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
                             <img src="{% static 'assets/svg/illustrations/star-muted.svg' %}" alt="Review rating"
                                 width="16">
                             <img src="{% static 'assets/svg/illustrations/star-muted.svg' %}" alt="Review rating"
                                 width="16">
-                        </div>
-                        <span class="small">125</span>
-                    </a>
-                    <!-- End Rating -->
-
-                    <button type="button" class="btn btn-outline-primary btn-sm rounded-pill">Add to cart</button>
-                </div>
-            </div>
-            <!-- End Card -->
-        </div>
-        <!-- End Col -->
-
-        <div class="col mb-4">
-            <!-- Card -->
-            <div class="card card-bordered shadow-none text-center h-100">
-                <div class="card-pinned">
-                    <img class="card-img-top" src="{% static 'assets/img/300x180/img6.jpg' %}" alt="Image Description">
-
-                    <div class="card-pinned-top-end">
-                        <button type="button" class="btn btn-outline-secondary btn-xs btn-icon rounded-circle"
-                            data-bs-toggle="tooltip" data-bs-placement="top" title="Save for later">
-                            <i class="bi-heart"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    <div class="mb-1">
-                        <a class="link-sm link-secondary" href="#">Clothing</a>
-                    </div>
-                    <a class="text-body" href="../demo-shop/product-overview.html">Front Originals adicolor t-shirt with
-                        trefoil logo</a>
-                    <p class="card-text text-dark">$38.00</p>
-                </div>
-
-                <div class="card-footer pt-0">
-                    <!-- Rating -->
-                    <a class="d-inline-flex align-items-center mb-3" href="#">
-                        <div class="d-flex gap-1 me-2">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                        </div>
-                        <span class="small">9</span>
-                    </a>
-                    <!-- End Rating -->
-
-                    <button type="button" class="btn btn-outline-primary btn-sm rounded-pill">Add to cart</button>
-                </div>
-            </div>
-            <!-- End Card -->
-        </div>
-        <!-- End Col -->
-
-        <div class="col mb-4">
-            <!-- Card -->
-            <div class="card card-bordered shadow-none text-center h-100">
-                <div class="card-pinned">
-                    <img class="card-img-top" src="{% static 'assets/img/300x180/img7.jpg' %}" alt="Image Description">
-
-                    <div class="card-pinned-top-end">
-                        <button type="button" class="btn btn-outline-secondary btn-xs btn-icon rounded-circle"
-                            data-bs-toggle="tooltip" data-bs-placement="top" title="Save for later">
-                            <i class="bi-heart"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    <div class="mb-1">
-                        <a class="link-sm link-secondary" href="#">Accessories</a>
-                    </div>
-                    <a class="text-body" href="../demo-shop/product-overview.html">Front mesh baseball cap with
-                        signature logo</a>
-                    <p class="card-text text-dark">$8.8</p>
-                </div>
-
-                <div class="card-footer pt-0">
-                    <!-- Rating -->
-                    <a class="d-inline-flex align-items-center mb-3" href="#">
-                        <div class="d-flex gap-1 me-2">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                        </div>
-                        <span class="small">9</span>
-                    </a>
-                    <!-- End Rating -->
-
-                    <button type="button" class="btn btn-outline-primary btn-sm rounded-pill">Add to cart</button>
-                </div>
-            </div>
-            <!-- End Card -->
-        </div>
-        <!-- End Col -->
-
-        <div class="col mb-4">
-            <!-- Card -->
-            <div class="card card-bordered shadow-none text-center h-100">
-                <div class="card-pinned">
-                    <img class="card-img-top" src="{% static 'assets/img/300x180/img2.jpg' %}" alt="Image Description">
-
-                    <div class="card-pinned-top-end">
-                        <button type="button" class="btn btn-outline-secondary btn-xs btn-icon rounded-circle"
-                            data-bs-toggle="tooltip" data-bs-placement="top" title="Save for later">
-                            <i class="bi-heart"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    <div class="mb-1">
-                        <a class="link-sm link-secondary" href="#">Clothing</a>
-                    </div>
-                    <a class="text-body" href="../demo-shop/product-overview.html">Front Originals adicolor t-shirt in
-                        gray</a>
-                    <p class="card-text text-dark">$24</p>
-                </div>
-
-                <div class="card-footer pt-0">
-                    <!-- Rating -->
-                    <a class="d-inline-flex align-items-center mb-3" href="#">
-                        <div class="d-flex gap-1 me-2">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
+                            <img src="{% static 'assets/svg/illustrations/star-muted.svg' %}" alt="Review rating"
+                                width="16">
+                            <img src="{% static 'assets/svg/illustrations/star-muted.svg' %}" alt="Review rating"
+                                width="16">
+                            <img src="{% static 'assets/svg/illustrations/star-muted.svg' %}" alt="Review rating"
+                                width="16">
                         </div>
                         <span class="small">0</span>
-                    </a>
+                    </a> -->
                     <!-- End Rating -->
 
-                    <button type="button" class="btn btn-outline-primary btn-sm rounded-pill">Add to cart</button>
-                </div>
-            </div>
-            <!-- End Card -->
-        </div>
-        <!-- End Col -->
 
-        <div class="col mb-4">
-            <!-- Card -->
-            <div class="card card-bordered shadow-none text-center h-100">
-                <div class="card-pinned">
-                    <img class="card-img-top" src="{% static 'assets/img/300x180/img5.jpg' %}" alt="Image Description">
 
-                    <div class="card-pinned-top-end">
-                        <button type="button" class="btn btn-outline-secondary btn-xs btn-icon rounded-circle"
-                            data-bs-toggle="tooltip" data-bs-placement="top" title="Save for later">
-                            <i class="bi-heart"></i>
+                    <form action="{% url 'product:add_to_cart' %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="product" value="{{product.id}}">
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" class="btn btn-outline-primary btn-sm rounded-pill">
+                            Add to cart
                         </button>
-                    </div>
-                </div>
+                    </form>
 
-                <div class="card-body">
-                    <div class="mb-1">
-                        <a class="link-sm link-secondary" href="#">Clothing</a>
-                    </div>
-                    <a class="text-body" href="../demo-shop/product-overview.html">COLLUSION Unisex mechanic print
-                        t-shirt</a>
-                    <p class="card-text text-dark">$43.99</p>
-                </div>
-
-                <div class="card-footer pt-0">
-                    <!-- Rating -->
-                    <a class="d-inline-flex align-items-center mb-3" href="#">
-                        <div class="d-flex gap-1 me-2">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                        </div>
-                        <span class="small">35</span>
-                    </a>
-                    <!-- End Rating -->
-
-                    <button type="button" class="btn btn-outline-primary btn-sm rounded-pill">Add to cart</button>
                 </div>
             </div>
             <!-- End Card -->
         </div>
         <!-- End Col -->
-
-        <div class="col mb-4">
-            <!-- Card -->
-            <div class="card card-bordered shadow-none text-center h-100">
-                <div class="card-pinned">
-                    <img class="card-img-top" src="{% static 'assets/img/300x180/img8.jpg' %}" alt="Image Description">
-
-                    <div class="card-pinned-top-end">
-                        <button type="button" class="btn btn-outline-secondary btn-xs btn-icon rounded-circle"
-                            data-bs-toggle="tooltip" data-bs-placement="top" title="Save for later">
-                            <i class="bi-heart"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    <div class="mb-1">
-                        <a class="link-sm link-secondary" href="#">Accessories</a>
-                    </div>
-                    <a class="text-body" href="../demo-shop/product-overview.html">Billabong Walled snapback in
-                        green</a>
-                    <p class="card-text text-dark">$12.00</p>
-                </div>
-
-                <div class="card-footer pt-0">
-                    <!-- Rating -->
-                    <a class="d-inline-flex align-items-center mb-3" href="#">
-                        <div class="d-flex gap-1 me-2">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                            <img src="{% static 'assets/svg/illustrations/star.svg' %}" alt="Review rating" width="16">
-                        </div>
-                        <span class="small">35</span>
-                    </a>
-                    <!-- End Rating -->
-
-                    <button type="button" class="btn btn-outline-primary btn-sm rounded-pill">Add to cart</button>
-                </div>
-            </div>
-            <!-- End Card -->
-        </div>
-        <!-- End Col -->
+        {% endfor %}
     </div>
     <!-- End Row -->
 
     <div class="text-center">
-        <a class="btn btn-outline-primary btn-transition rounded-pill" href="#">View all products</a>
+        <a class="btn btn-outline-primary btn-transition rounded-pill" href="{% url 'product:products' %}">View all
+            products</a>
     </div>
 </div>
 <!-- End Card Grid -->
