@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-!dbixnll#n*k8k@&-p==#ym*$z-_i7*8!*6r3c@vo6$9&4s8oi'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['himelbikon.pythonanywhere.com', '143.198.144.192']
 
@@ -80,10 +80,21 @@ WSGI_APPLICATION = 'shopzesta.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'shopzestaDB',
+        'USER': 'shopzesta_admin',
+        'PASSWORD': 'shopzesta123',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
