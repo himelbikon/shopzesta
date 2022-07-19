@@ -33,7 +33,6 @@ def cart(request):
         return redirect('user:login')
 
     if request.method == 'GET':
-        print('cart cart ===============')
         cart = Cart.objects.filter(user=request.user).first()
         data = {
             'cart': cart,
@@ -71,9 +70,6 @@ def add_to_cart(request):
 
 
 def create_order(request):
-    print('======================================')
-    print('Create Order')
-    print('======================================')
     if not request.user.is_authenticated:
         return redirect('user:login')
 
@@ -100,3 +96,25 @@ def create_order(request):
         cart.delete()
 
     return redirect('core:index')
+
+
+def remove_from_cart(request):
+    if not request.user.is_authenticated:
+        return redirect('user:login')
+
+    if request.method == 'POST':
+        product = Product.objects.get(pk=request.POST['product'])
+        cart = Cart.objects.filter(user=request.user).first()
+
+        cart_item = CartItem.objects.filter(
+            product=product, cart=cart).first()
+
+        if cart_item:
+            cart_item.delete()
+
+        cart_item = CartItem.objects.filter(cart=cart).first()
+
+        if cart_item is None:
+            cart.delete()
+
+        return redirect('product:cart')

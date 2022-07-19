@@ -62,7 +62,13 @@ class CartItem(models.Model):
     def save(self, *args, **kwargs):
         self.qty_price = self.product.price * self.quantity
         super(CartItem, self).save(*args, **kwargs)
+        self.update_total_price()
 
+    def delete(self, *args, **kwargs):
+        super(CartItem, self).delete(*args, **kwargs)
+        self.update_total_price()
+
+    def update_total_price(self):
         cart_items = CartItem.objects.filter(cart=self.cart)
         total_price = sum(
             [item.product.price * item.quantity for item in cart_items])

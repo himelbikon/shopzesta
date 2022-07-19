@@ -13,31 +13,31 @@
             <!-- End Heading -->
 
             <!-- Form -->
-            <form>
-                <!-- List Group -->
-                <ul class="list-group list-group-flush list-group-no-gutters mb-5">
-                    <!-- Item -->
-                    {% for item in cart_items %}
-                    <li class="list-group-item">
-                        <div class="d-flex">
-                            <div class="flex-shrink-0">
-                                <img class="avatar avatar-xl avatar-4x3" src="{{item.product.image1.url}}"
-                                    alt="Image Description">
-                            </div>
+            <!-- <form> -->
+            <!-- List Group -->
+            <ul class="list-group list-group-flush list-group-no-gutters mb-5">
+                <!-- Item -->
+                {% for item in cart_items %}
+                <li class="list-group-item">
+                    <div class="d-flex">
+                        <div class="flex-shrink-0">
+                            <img class="avatar avatar-xl avatar-4x3" src="{{item.product.image1.url}}"
+                                alt="Image Description">
+                        </div>
 
-                            <div class="flex-grow-1 ms-3">
-                                <div class="row">
-                                    <div class="col-sm-7 mb-3 mb-sm-0">
-                                        <h5><a class="text-dark" href="#">{{item.product.name}}</a></h5>
+                        <div class="flex-grow-1 ms-3">
+                            <div class="row">
+                                <div class="col-sm-7 mb-3 mb-sm-0">
+                                    <h5><a class="text-dark" href="#">{{item.product.name}}</a></h5>
 
-                                        <div class="d-block d-sm-none">
-                                            <h5 class="mb-1">
-                                                ${{item.product.price}}
-                                            </h5>
-                                        </div>
+                                    <div class="d-block d-sm-none">
+                                        <h5 class="mb-1">
+                                            ${{item.product.price}}
+                                        </h5>
+                                    </div>
 
-                                        <div class="d-grid gap-1">
-                                            <!-- <div class="text-body">
+                                    <div class="d-grid gap-1">
+                                        <!-- <div class="text-body">
                                                 <span class="small">Gender:</span>
                                                 <span class="fw-semi-bold small">Men</span>
                                             </div>
@@ -51,16 +51,16 @@
                                                 <span class="small">Size:</span>
                                                 <span class="fw-semi-bold small">One size</span>
                                             </div> -->
-                                        </div>
                                     </div>
-                                    <!-- End Col -->
+                                </div>
+                                <!-- End Col -->
 
-                                    <div class="col-sm-3">
-                                        <div class="row">
-                                            <div class="col-auto">
-                                                <small>{{item.quantity}}</small>
-                                                <!-- Select -->
-                                                <!-- <select class="form-select form-select-sm mb-3">
+                                <div class="col-sm-3">
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <small>{{item.quantity}}</small>
+                                            <!-- Select -->
+                                            <!-- <select class="form-select form-select-sm mb-3">
                                                     <option value="quantity1">1</option>
                                                     <option value="quantity2">2</option>
                                                     <option value="quantity3">3</option>
@@ -72,50 +72,55 @@
                                                     <option value="quantity9">9</option>
                                                     <option value="quantity10">10</option>
                                                 </select> -->
-                                                <!-- End Select -->
-                                            </div>
+                                            <!-- End Select -->
+                                        </div>
 
-                                            <div class="col-auto">
-                                                <div class="d-grid gap-2">
-                                                    <a class="link-sm link-secondary small" href="javascript:;">
-                                                        <i class="bi-trash me-1"></i> Remove
-                                                    </a>
+                                        <div class="col-auto">
+                                            <div class="d-grid gap-2">
+                                                <form action="{% url 'product:remove_from_cart' %}" method="post">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="product" value="{{item.product.id}}">
+                                                    <button type="submit" class="link-sm link-secondary small"
+                                                        style="outline: none; border:0">
+                                                        <i class=" bi-trash me-1"></i> Remove
+                                                    </button>
+                                                </form>
 
-                                                    <!-- <a class="link-sm link-secondary small" href="javascript:;">
+                                                <!-- <a class="link-sm link-secondary small" href="javascript:;">
                                                         <i class="bi-heart me-1"></i> Save for later
                                                     </a> -->
-                                                </div>
                                             </div>
-                                            <!-- End Col -->
                                         </div>
-                                        <!-- End Row -->
+                                        <!-- End Col -->
                                     </div>
-                                    <!-- End Col -->
-
-                                    <div class="col-4 col-sm-2 d-none d-sm-inline-block text-right">
-                                        <span class="h5 d-block mb-1">
-                                            ${{item.qty_price}}
-                                        </span>
-                                    </div>
-                                    <!-- End Col -->
+                                    <!-- End Row -->
                                 </div>
-                                <!-- End Row -->
+                                <!-- End Col -->
+
+                                <div class="col-4 col-sm-2 d-none d-sm-inline-block text-right">
+                                    <span class="h5 d-block mb-1">
+                                        ${{item.qty_price}}
+                                    </span>
+                                </div>
+                                <!-- End Col -->
                             </div>
+                            <!-- End Row -->
                         </div>
-                    </li>
-                    {% endfor %}
-                    <!-- End Item -->
+                    </div>
+                </li>
+                {% endfor %}
+                <!-- End Item -->
 
 
-                </ul>
-                <!-- End List Group -->
+            </ul>
+            <!-- End List Group -->
 
-                <div class="d-sm-flex justify-content-end">
-                    <a class="link" href="{% url 'product:products' %}">
-                        <i class="bi-chevron-left small ms-1"></i> Continue shopping
-                    </a>
-                </div>
-            </form>
+            <div class="d-sm-flex justify-content-end">
+                <a class="link" href="{% url 'product:products' %}">
+                    <i class="bi-chevron-left small ms-1"></i> Continue shopping
+                </a>
+            </div>
+            <!-- </form> -->
             <!-- End Form -->
         </div>
         <!-- End Col -->
