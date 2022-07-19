@@ -27,6 +27,10 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['himelbikon.pythonanywhere.com', '143.198.144.192']
 
+try:
+    from .local_settings import *
+except:
+    pass
 
 # Application definition
 
@@ -80,23 +84,24 @@ WSGI_APPLICATION = 'shopzesta.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'shopzestadb',
-        'USER': 'shopzesta_admin',
-        'PASSWORD': 'shopzesta123',
-        'HOST': 'localhost',
-        'PORT': '',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'shopzestadb',
+            'USER': 'shopzesta_admin',
+            'PASSWORD': 'shopzesta123',
+            'HOST': 'localhost',
+            'PORT': '',
+        }
+    }
 
 
 # Password validation
@@ -145,12 +150,12 @@ MEDIA_ROOT = BASE_DIR.joinpath('media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'user.User'
 
-try:
-    from .local_settings import *
+
+if DEBUG:
     print('<<< --- You are on local server --- >>>')
     STATICFILES_DIRS = [
         BASE_DIR.joinpath('static'),
     ]
-except:
+else:
     print('<<< --- Production server --- >>>')
     STATIC_ROOT = BASE_DIR.joinpath('static')

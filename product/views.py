@@ -36,9 +36,6 @@ def add_to_cart(request):
         return redirect('user:login')
 
     if request.method == 'POST':
-        print('===================================')
-        print(request.POST)
-        print('===================================')
         product = Product.objects.get(pk=request.POST['product'])
         quantity = int(request.POST['quantity'])
 
