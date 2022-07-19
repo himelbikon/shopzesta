@@ -10,8 +10,20 @@ def overview(request, id):
 
 
 def products(request):
+    num_of_query = 9
+    page = int(request.GET.get('page')) if request.GET.get('page') else 1
+
+    print(num_of_query, page)
+
     data = {
-        'products': Product.objects.all()
+        'products': Product.objects.all()[(page-1)*num_of_query: page*num_of_query],
+        'page': page,
+        'prev_page': page - 1,
+        'prev_page2': page - 2,
+        'prev_page3': page - 3,
+        'next_page': page + 1,
+        'next_page2': page + 2,
+        'next_page3': page + 3,
     }
     return render(request, 'product/products.html', data)
 
