@@ -3,8 +3,10 @@ from .models import *
 
 
 def overview(request, id):
+    product = Product.objects.get(pk=id)
     data = {
-        'product': Product.objects.get(pk=id)
+        'title': product.name + ' | Shopzesta',
+        'product': product,
     }
     return render(request, 'product/overview.html', data)
 
@@ -16,6 +18,7 @@ def products(request):
     print(num_of_query, page)
 
     data = {
+        'title': 'Shop | Shopzesta',
         'products': Product.objects.all()[(page-1)*num_of_query: page*num_of_query],
         'page': page,
         'prev_page': page - 1,
@@ -35,10 +38,10 @@ def cart(request):
     if request.method == 'GET':
         cart = Cart.objects.filter(user=request.user).first()
         data = {
+            'title': 'Cart | Shopzesta',
             'cart': cart,
             'cart_items': CartItem.objects.filter(cart=cart)
         }
-
         return render(request, 'product/cart.html', data)
 
 

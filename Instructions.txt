@@ -1,13 +1,9 @@
-there is an ecommerce section
-
-we need a basic index page
-
-product listing page
-
-shopping cart and checkout
-
-no payment processing integration
-
-it just saves everything on the back end
-
-client needs to be able to enter all items in himself
+01. Shopzesta logo & name
+02. All page html to # DONE
+03. Products page column center DONE
+04. Count in stock
+05. Set total in cart page
+06. product increase decrease in cart page
+07. Signup system (Sign in is already made)
+08. Title for all page DONE
+09. Theme color similar to logo

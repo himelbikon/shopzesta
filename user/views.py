@@ -7,13 +7,15 @@ def index(request):
 
 
 def user_login(request):
-    data = {}
+    data = {
+        'title': 'Login | Shopzesta',
+    }
 
     if request.user.is_authenticated:
         return redirect('core:index')
 
     if request.method == 'GET':
-        return render(request, 'user/login.html')
+        return render(request, 'user/login.html', data)
 
     if request.method == 'POST':
         user = authenticate(
