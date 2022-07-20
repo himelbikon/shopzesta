@@ -15,6 +15,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     description = models.CharField(max_length=255)
     price = models.DecimalField(decimal_places=2, max_digits=10)
+    count_in_stock = models.IntegerField(default=15)
     details = models.TextField()
 
     image1 = models.ImageField(upload_to='product/')
@@ -96,3 +97,10 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return self.product.name
+
+    def save(self, *args, **kwargs):
+        super(OrderItem, self).save(*args, **kwargs)
+
+        product = Product.objects.get(pk=self.product.id)
+        product.count_in_stock -= self.quantity
+        product.save()

@@ -12,6 +12,13 @@
             </div>
             <!-- End Heading -->
 
+            <!-- Error alert -->
+            {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{error}}
+            </div>
+            {% endif %}
+
             <!-- Form -->
             <!-- <form> -->
             <!-- List Group -->
@@ -28,7 +35,9 @@
                         <div class="flex-grow-1 ms-3">
                             <div class="row">
                                 <div class="col-sm-7 mb-3 mb-sm-0">
-                                    <h5><a class="text-dark" href="#">{{item.product.name}}</a></h5>
+                                    <h5><a class="text-dark"
+                                            href="{% url 'product:overview' item.product.id %}">{{item.product.name}}</a>
+                                    </h5>
 
                                     <div class="d-block d-sm-none">
                                         <h5 class="mb-1">
@@ -194,7 +203,7 @@
 
                                 <dl class="row">
                                     <dt class="col-sm-6">Total</dt>
-                                    <dd class="col-sm-6 text-sm-end mb-0">$73.98</dd>
+                                    <dd class="col-sm-6 text-sm-end mb-0">${{cart.total_price}}</dd>
                                 </dl>
                                 <!-- End Row -->
                             </div>

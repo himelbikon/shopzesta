@@ -82,10 +82,21 @@ def create_order(request):
         if cart is None:
             return redirect('product:products')
 
+        # Checking count in stock
+        cart_items = CartItem.objects.filter(cart=cart)
+
+        for cart_item in cart_items:
+            if cart_item.product.stock < cart_item.quantity:
+                data = {
+                    'title': 'Cart | Shopzesta',
+                    'cart': cart,
+                    'cart_items': cart_items,
+                    'error': 'Not enough stock',
+                }
+                return render(request, 'product/cart.html', data)
+
         order = Order(user=request.user, total_price=cart.total_price)
         order.save()
-
-        cart_items = CartItem.objects.filter(cart=cart)
 
         for item in cart_items:
             order_item = OrderItem(

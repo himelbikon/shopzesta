@@ -1,4 +1,4 @@
-{% extends 'main.html' %} {% load static %}
+{% extends 'main.html' %} {% load static %} {% load product_tags %}
 
 {% block content %}
 
@@ -99,7 +99,7 @@
             <!-- End Heading -->
 
             <!-- Price -->
-            <div class="mb-5">
+            <div class="mb-3">
                 <span class="d-block mb-2">Total price:</span>
                 <div class="d-flex align-items-center">
                     <h3 class="mb-0">${{product.price}}</h3>
@@ -107,6 +107,10 @@
                 </div>
             </div>
             <!-- End Price -->
+
+            <div class="my-2">
+                Count in stock: {{product.count_in_stock}}
+            </div>
 
             <!-- Quantity -->
             <form action="{% url 'product:add_to_cart' %}" method="post">
@@ -116,19 +120,8 @@
                     <div class="js-quantity-counter row align-items-center">
                         <!-- Select -->
                         <select class="form-select" name="quantity">
-                            <option value="1" selected="">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
+                            <!-- <option value="1" selected="">1</option> -->
+                            {{product.id|stock_select|safe}}
                         </select>
                         <!-- End Select -->
 
