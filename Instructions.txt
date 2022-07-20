@@ -1,9 +1,9 @@
 01. DONE Shopzesta logo & name 
 02. DONE All page html to # 
 03. DONE Products page column center 
-04.     Count in stock
+04. DONE Count in stock
 05. DONE Set total in cart page 
-06.     product increase decrease in cart page
+06. DONE product increase decrease in cart page
 07.     Signup system (Sign in is already made)
 08. DONE Title for all page 
 09. DONE Theme color similar to logo #ea3a3c hover #9c1f21 (Original #377dff hover #2f6ad9)

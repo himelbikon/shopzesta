@@ -35,14 +35,35 @@ def cart(request):
     if not request.user.is_authenticated:
         return redirect('user:login')
 
+    cart = Cart.objects.filter(user=request.user).first()
+    data = {
+        'title': 'Cart | Shopzesta',
+        'cart': cart,
+        'cart_items': CartItem.objects.filter(cart=cart)
+    }
+
     if request.method == 'GET':
-        cart = Cart.objects.filter(user=request.user).first()
-        data = {
-            'title': 'Cart | Shopzesta',
-            'cart': cart,
-            'cart_items': CartItem.objects.filter(cart=cart)
-        }
         return render(request, 'product/cart.html', data)
+
+    if request.method == 'POST':
+        product = Product.objects.get(pk=request.POST['product'])
+        quantity = int(request.POST['quantity'])
+        cart_item = CartItem.objects.filter(product=product).first()
+
+        if product.count_in_stock - quantity < 0:
+            data['error'] = 'Not enough stock'
+            return render(request, 'product/cart.html', data)
+
+        product.count_in_stock -= quantity
+        cart_item.quantity += quantity
+
+        if cart_item.quantity == 0:
+            cart_item.delete()
+        else:
+            product.save()
+            cart_item.save()
+
+        return redirect('product:cart')
 
 
 def add_to_cart(request):
@@ -52,6 +73,17 @@ def add_to_cart(request):
     if request.method == 'POST':
         product = Product.objects.get(pk=request.POST['product'])
         quantity = int(request.POST['quantity'])
+        qty_abs = request.POST.get('qty_abs')
+
+        if product.count_in_stock - quantity < 0:
+            cart = Cart.objects.filter(user=request.user).first()
+            data = {
+                'title': 'Cart | Shopzesta',
+                'cart': cart,
+                'cart_items': CartItem.objects.filter(cart=cart),
+                'error': 'Not enough stock',
+            }
+            return render(request, 'product/cart.html', data)
 
         cart = Cart.objects.filter(user=request.user).first()
 
@@ -65,8 +97,18 @@ def add_to_cart(request):
         if cart_item is None:
             cart_item = CartItem(product=product, quantity=quantity, cart=cart)
             cart_item.save()
+            product.count_in_stock -= quantity
+            product.save()
         else:
-            cart_item.quantity += quantity
+            if qty_abs:
+                product.count_in_stock += cart_item.quantity - quantity
+                product.save()
+                cart_item.quantity = quantity
+            else:
+                cart_item.quantity += quantity
+                product.count_in_stock -= quantity
+                product.save()
+
             cart_item.save()
 
         return redirect('core:index')

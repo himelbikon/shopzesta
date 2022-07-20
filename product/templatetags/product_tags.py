@@ -1,19 +1,21 @@
 from django import template
-from product.models import CartItem
+from product.models import CartItem, Product
 
 register = template.Library()
 
 
 @register.filter
 def stock_select(product_id):
+    product = Product.objects.get(id=product_id)
     item = CartItem.objects.filter(product__id=product_id).first()
 
     options = ''
-    for i in range(1, item.product.count_in_stock+1):
-        options += f'<option value="{i}">{i}</option>\n'
-
-    '''<option value="1" selected="">1</option>
-                            <option value="2">2</option>
-'''
+    for i in range(1, product.count_in_stock+1):
+        if i == 1 and item is None:
+            options += f'<option value="{i}" selected="">{i}</option>'
+        elif item and item.quantity == i:
+            options += f'<option value="{i}" selected="">{i}</option>'
+        else:
+            options += f'<option value="{i}">{i}</option>\n'
 
     return options

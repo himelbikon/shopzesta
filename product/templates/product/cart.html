@@ -67,7 +67,22 @@
                                 <div class="col-sm-3">
                                     <div class="row">
                                         <div class="col-auto">
+                                            <form method="post">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="product" value="{{item.product.id}}">
+                                                <input type="hidden" name="quantity" value="1">
+                                                <button style="padding:0 3px;" class="btn btn-primary btn-sm">+</button>
+
+                                            </form>
                                             <small>{{item.quantity}}</small>
+                                            <form method="post">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="product" value="{{item.product.id}}">
+                                                <input type="hidden" name="quantity" value="-1">
+                                                <button style="padding:0 4px;" class="btn btn-primary btn-sm"> -
+                                                </button>
+
+                                            </form>
                                             <!-- Select -->
                                             <!-- <select class="form-select form-select-sm mb-3">
                                                     <option value="quantity1">1</option>
@@ -84,7 +99,7 @@
                                             <!-- End Select -->
                                         </div>
 
-                                        <div class="col-auto">
+                                        <div class="col-auto my-2">
                                             <div class="d-grid gap-2">
                                                 <form action="{% url 'product:remove_from_cart' %}" method="post">
                                                     {% csrf_token %}
