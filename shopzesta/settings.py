@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-!dbixnll#n*k8k@&-p==#ym*$z-_i7*8!*6r3c@vo6$9&4s8oi
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['himelbikon.pythonanywhere.com', '143.198.144.192']
+ALLOWED_HOSTS = ['himelbikon.pythonanywhere.com',
+                 '143.198.144.192', 'Shopzesta.com', 'www.Shopzesta.com']
 
 try:
     from .local_settings import *
