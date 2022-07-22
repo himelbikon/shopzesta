@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-!dbixnll#n*k8k@&-p==#ym*$z-_i7*8!*6r3c@vo6$9&4s8oi'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['himelbikon.pythonanywhere.com',
                  '143.198.144.192', 'shopzesta.com', 'www.shopzesta.com']
@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'shopzesta.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-if DEBUG:
+if not DEBUG:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -152,7 +152,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'user.User'
 
 
-if DEBUG:
+if not DEBUG:
     print('<<< --- You are on local server --- >>>')
     STATICFILES_DIRS = [
         BASE_DIR.joinpath('static'),
