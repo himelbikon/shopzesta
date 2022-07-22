@@ -50,17 +50,17 @@ def cart(request):
         quantity = int(request.POST['quantity'])
         cart_item = CartItem.objects.filter(product=product).first()
 
-        if product.count_in_stock - quantity < 0:
+        cur_quantity = cart_item.quantity if cart_item else 0
+
+        if product.count_in_stock - quantity - cur_quantity < 0:
             data['error'] = 'Not enough stock'
             return render(request, 'product/cart.html', data)
 
-        product.count_in_stock -= quantity
         cart_item.quantity += quantity
 
         if cart_item.quantity == 0:
             cart_item.delete()
         else:
-            product.save()
             cart_item.save()
 
         return redirect('product:cart')
@@ -75,8 +75,11 @@ def add_to_cart(request):
         quantity = int(request.POST['quantity'])
         qty_abs = request.POST.get('qty_abs')
 
+        cart = Cart.objects.filter(user=request.user).first()
+        cart_item = CartItem.objects.filter(
+            product=product, cart=cart).first()
+
         if product.count_in_stock - quantity < 0:
-            cart = Cart.objects.filter(user=request.user).first()
             data = {
                 'title': 'Cart | Shopzesta',
                 'cart': cart,
@@ -85,29 +88,18 @@ def add_to_cart(request):
             }
             return render(request, 'product/cart.html', data)
 
-        cart = Cart.objects.filter(user=request.user).first()
-
         if cart is None:
             cart = Cart(user=request.user)
             cart.save()
 
-        cart_item = CartItem.objects.filter(
-            product=product, cart=cart).first()
-
         if cart_item is None:
             cart_item = CartItem(product=product, quantity=quantity, cart=cart)
             cart_item.save()
-            product.count_in_stock -= quantity
-            product.save()
         else:
             if qty_abs:
-                product.count_in_stock += cart_item.quantity - quantity
-                product.save()
                 cart_item.quantity = quantity
             else:
                 cart_item.quantity += quantity
-                product.count_in_stock -= quantity
-                product.save()
 
             cart_item.save()
 
@@ -128,7 +120,7 @@ def create_order(request):
         cart_items = CartItem.objects.filter(cart=cart)
 
         for cart_item in cart_items:
-            if cart_item.product.stock < cart_item.quantity:
+            if cart_item.product.count_in_stock < cart_item.quantity:
                 data = {
                     'title': 'Cart | Shopzesta',
                     'cart': cart,
