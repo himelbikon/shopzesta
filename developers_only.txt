@@ -1,0 +1,3 @@
+If you update your Django application, you can restart the Gunicorn process to pick up the changes by typing:
+
+sudo systemctl restart gunicorn
