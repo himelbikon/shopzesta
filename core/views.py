@@ -10,3 +10,17 @@ def index(request):
         'carousel': Carousel.objects.all(),
     }
     return render(request, 'core/index.html', data)
+
+
+# def about_us(request):
+#     data = {
+#         'title': 'About us | Shopzesta',
+#     }
+#     return render(request, 'core/about_us.html', data)
+
+
+def terms_and_conditions(request):
+    data = {
+        'title': 'Terms and conditions | Shopzesta',
+    }
+    return render(request, 'core/about_us.html', data)

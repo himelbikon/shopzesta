@@ -223,6 +223,15 @@
                                 <!-- End Row -->
                             </div>
 
+                            <!-- Checkbox -->
+                            <div class="form-check mb-3">
+                                <input type="checkbox" id="formCheck12" class="form-check-input" required>
+                                <label class="form-check-label" for="formCheck12">
+                                    I agree to the terms and conditions
+                                </label>
+                            </div>
+                            <!-- End Checkbox -->
+
                             <div class="d-grid">
                                 {% csrf_token %}
                                 <input type="hidden" name="asas" value="asasas">
@@ -265,3 +274,9 @@
 </div>
 
 {% endblock content %}
+
+{% block js %}
+
+<script src="{% static 'customJs/cart.js' %}"></script>
+
+{% endblock js %}
