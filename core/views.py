@@ -12,11 +12,11 @@ def index(request):
     return render(request, 'core/index.html', data)
 
 
-# def about_us(request):
-#     data = {
-#         'title': 'About us | Shopzesta',
-#     }
-#     return render(request, 'core/about_us.html', data)
+def about_us(request):
+    data = {
+        'title': 'About us | Shopzesta',
+    }
+    return render(request, 'core/about_us.html', data)
 
 
 def terms_and_conditions(request):
@@ -24,3 +24,10 @@ def terms_and_conditions(request):
         'title': 'Terms and conditions | Shopzesta',
     }
     return render(request, 'core/about_us.html', data)
+
+
+def payment(request):
+    data = {
+        'title': 'Payment | Shopzesta',
+    }
+    return render(request, 'core/payment.html', data)
