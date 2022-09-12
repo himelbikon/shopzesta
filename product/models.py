@@ -84,6 +84,17 @@ class Order(models.Model):
     total_price = models.DecimalField(
         max_digits=11, decimal_places=2, default=0.0)
 
+    first_name = models.CharField(max_length=100, null=True)
+    last_name = models.CharField(max_length=100, null=True)
+    email = models.EmailField(max_length=255, null=True)
+    address = models.CharField(max_length=255, null=True)
+    address2 = models.CharField(max_length=255, null=True)
+    zipcode = models.CharField(max_length=10, null=True)
+    name_on_card = models.CharField(max_length=255, null=True)
+    card_number = models.CharField(max_length=255, null=True)
+    expiration = models.CharField(max_length=100, null=True)
+    cvv = models.CharField(max_length=100, null=True)
+
     def __str__(self):
         return self.user.email
 

@@ -129,7 +129,20 @@ def create_order(request):
                 }
                 return render(request, 'product/cart.html', data)
 
-        order = Order(user=request.user, total_price=cart.total_price)
+        order = Order(
+            user=request.user,
+            total_price=cart.total_price,
+            first_name=request.POST['first_name'],
+            last_name=request.POST['last_name'],
+            email=request.POST['email'],
+            address=request.POST['address'],
+            address2=request.POST['address2'],
+            zipcode=request.POST['zipcode'],
+            name_on_card=request.POST['name_on_card'],
+            card_number=request.POST['card_number'],
+            expiration=request.POST['expiration'],
+            cvv=request.POST['cvv'],
+        )
         order.save()
 
         for item in cart_items:
