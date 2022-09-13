@@ -1,5 +1,5 @@
 from django import template
-from product.models import CartItem, Product
+from product.models import CartItem, Product, Category
 
 register = template.Library()
 
@@ -19,3 +19,9 @@ def stock_select(product_id):
             options += f'<option value="{i}">{i}</option>\n'
 
     return options
+
+
+@register.filter
+def cat_length(cat):
+    # return 5
+    return Product.objects.filter(category=cat).count()

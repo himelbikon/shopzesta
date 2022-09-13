@@ -12,6 +12,13 @@ def overview(request, id):
 
 
 def products(request):
+    categories = Category.objects.all()
+    products = Product.objects.all()
+
+    cat_query = request.GET.get('category')
+    if cat_query:
+        products = products.filter(category__name=cat_query)
+
     num_of_query = 9
     page = int(request.GET.get('page')) if request.GET.get('page') else 1
 
@@ -19,7 +26,8 @@ def products(request):
 
     data = {
         'title': 'Shop | Shopzesta',
-        'products': Product.objects.all()[(page-1)*num_of_query: page*num_of_query],
+        'products': products[(page-1)*num_of_query: page*num_of_query],
+        'categories': categories,
         'page': page,
         'prev_page': page - 1,
         'prev_page2': page - 2,
