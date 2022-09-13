@@ -525,7 +525,8 @@
                         {% else %}
                     <li class="page-item disabled">
                         {% endif %}
-                        <a class="page-link" href="{% url 'product:products' %}?page={{prev_page}}"
+                        <a class="page-link"
+                            href="{% url 'product:products' %}?page={{prev_page}}&category={{cat_query}}"
                             aria-label="Previous">
                             <span aria-hidden="true">
                                 <i class="bi-chevron-double-left small"></i>
@@ -534,23 +535,29 @@
                     </li>
                     {% if prev_page2 > 0 %}
                     <li class="page-item"><a class="page-link"
-                            href="{% url 'product:products' %}?page={{prev_page2}}">{{prev_page2}}</a></li>
+                            href="{% url 'product:products' %}?page={{prev_page2}}&category={{cat_query}}">{{prev_page2}}</a>
+                    </li>
                     {% endif %}
 
                     {% if prev_page > 0 %}
                     <li class="page-item"><a class="page-link"
-                            href="{% url 'product:products' %}?page={{prev_page}}">{{prev_page}}</a></li>
+                            href="{% url 'product:products' %}?page={{prev_page}}&category={{cat_query}}">{{prev_page}}</a>
+                    </li>
                     {% endif %}
 
                     <li class="page-item active"><a class="page-link"
-                            href="{% url 'product:products' %}?page={{page}}">{{page}}</a></li>
+                            href="{% url 'product:products' %}?page={{page}}&category={{cat_query}}">{{page}}</a></li>
                     <li class="page-item"><a class="page-link"
-                            href="{% url 'product:products' %}?page={{next_page}}">{{next_page}}</a></li>
+                            href="{% url 'product:products' %}?page={{next_page}}&category={{cat_query}}">{{next_page}}</a>
+                    </li>
                     <li class="page-item"><a class="page-link"
-                            href="{% url 'product:products' %}?page={{next_page2}}">{{next_page2}}</a></li>
+                            href="{% url 'product:products' %}?page={{next_page2}}&category={{cat_query}}">{{next_page2}}</a>
+                    </li>
 
                     <li class="page-item">
-                        <a class="page-link" href="{% url 'product:products' %}?page={{next_page}}" aria-label="Next">
+                        <a class="page-link"
+                            href="{% url 'product:products' %}?page={{next_page}}&category={{cat_query}}"
+                            aria-label="Next">
                             <span aria-hidden="true">
                                 <i class="bi-chevron-double-right small"></i>
                             </span>
